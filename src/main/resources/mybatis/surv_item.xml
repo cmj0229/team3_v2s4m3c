@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dev.mvc.surv_item.Surv_Item_DAOInter">
+
+  <insert id="surv_item_create" parameterType="Surv_Item_VO">
+    INSERT INTO SURV_ITEM(SURV_ITEM_NO, SURV_NO, mem_no, SURV_item_SEQNO, SURV_item_ANS, surv_item_passwd)
+    VALUES(surv_item_seq.nextval, #{surv_no}, #{mem_no}, #{surv_item_seqno}, #{surv_item_ans}, #{surv_item_passwd})
+  </insert>
+  
+  <select id="surv_item_list" resultType="Surv_Item_VO" parameterType="int">
+    SELECT SURV_ITEM_NO, SURV_NO, mem_no, SURV_item_SEQNO, SURV_item_ANS, surv_item_passwd
+    FROM SURV_ITEM
+    WHERE SURV_NO = #{surv_no}
+    ORDER BY SURV_ITEM_NO ASC
+  </select>
+  
+  <select id="surv_item_read" resultType="Surv_Item_VO" parameterType="int">
+    SELECT SURV_ITEM_NO, SURV_NO, mem_no, SURV_item_SEQNO, SURV_item_ANS, surv_item_passwd
+    FROM SURV_ITEM
+    where surv_item_no=#{surv_item_no}
+  </select>
+  
+  <update id="surv_item_update" parameterType="Surv_Item_VO" >
+    update surv_item
+    set surv_item_seqno=#{surv_item_seqno}, surv_item_ans =#{surv_item_ans}, surv_item_passwd=#{surv_item_passwd}
+    where surv_item_no=#{surv_item_no}
+  </update>
+
+  <select id="surv_item_passwd_check" parameterType="HashMap" resultType="int">
+    SELECT COUNT(*) as passwd_cnt
+    FROM surv_item
+    WHERE surv_item_no=#{surv_item_no} AND surv_item_passwd=#{surv_item_passwd}
+  </select>
+  
+  <delete id="surv_item_delete" parameterType="int">
+    delete 
+    from surv_item
+    where surv_item_no=#{surv_item_no}
+  </delete>
+  
+  <!-- <resultMap type="Surv_Surv_Item_VO" id="Surv_Surv_Item_VO_Map">
+    <association property="surv_VO" javaType="surv_VO">
+      <result column="s_surv_no" property="surv_no"/>
+      <result column="s_surv_title" property="surv_title"/>
+    </association>
+    
+    <association property="surv_Item_VO" javaType="surv_Item_VO">
+      <result column="i_surv_item_no" property="surv_item_no"/>
+      <result column="i_surv_no" property="surv_no"/>
+      <result column="i_surv_item_seqno" property="surv_item_seqno"/>
+      <result column="i_surv_item_ans_1" property="surv_item_ans_1"/>
+      <result column="i_surv_item_ans_2" property="surv_item_ans_2"/>
+      <result column="i_surv_item_ans_3" property="surv_item_ans_3"/>
+      <result column="i_surv_item_ans_4" property="surv_item_ans_4"/>
+      <result column="i_surv_item_passwd" property="surv_item_passwd"/>
+    </association>
+  </resultMap>   -->
+  
+  <!-- surv + surv_item-->
+  <select id="submit_list" resultType="Surv_Surv_Item_VO" parameterType="int">
+    SELECT s.surv_no as s_surv_no, s.surv_title as s_surv_title,
+              i.surv_no as i_surv_no, i.SURV_item_SEQNO as surv_item_seqno, i.surv_item_ans as surv_item_ans,
+              i.surv_item_cnt as surv_item_cnt, i.surv_item_passwd as surv_item_passwd
+    FROM surv s, surv_item i
+    WHERE s.surv_no = i.surv_no AND i.surv_no=#{surv_no}
+  </select> 
+  
+  <!-- 참여수증가-->
+  <update id="surv_item_cnt" parameterType="int">
+     update surv_item
+     set surv_item_cnt = surv_item_cnt +1
+     where surv_item_no=#{surv_item_no}
+  </update>
+</mapper>

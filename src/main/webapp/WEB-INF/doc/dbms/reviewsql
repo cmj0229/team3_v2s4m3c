@@ -1,0 +1,41 @@
+drop table review;
+CREATE TABLE review(
+		reviewno                      		NUMBER(10)		 NOT NULL		 PRIMARY KEY,
+		reviewtitle                   		VARCHAR2(300)		 NOT NULL,
+		reviewcontent                 		VARCHAR2(600)		 NOT NULL,
+		reviewimage                   		VARCHAR2(100)		 NULL ,
+		reviewhits                    		NUMBER(10)		 NOT NULL,
+		reviewcnt                     		NUMBER(10)		 NOT NULL,
+		reviewgrade                   		NUMBER(10)		 NOT NULL,
+		reviewvisible                 		CHAR(1)		 DEFAULT 'Y'		 NOT NULL,
+		reviewrdate                   		DATE		 NOT NULL,
+		AT_NO                         		NUMBER(10)		 NULL ,
+		MEM_NO                        		NUMBER(10)		 NULL ,
+  FOREIGN KEY (MEM_NO) REFERENCES MEM (MEM_NO),
+  FOREIGN KEY (AT_NO) REFERENCES AT (AT_NO)
+);
+
+COMMENT ON TABLE review is '상품리뷰';
+COMMENT ON COLUMN review.reviewno is '리뷰번호';
+COMMENT ON COLUMN review.reviewtitle is '제목';
+COMMENT ON COLUMN review.reviewcontent is '내용';
+COMMENT ON COLUMN review.reviewimage is '이미지파일';
+COMMENT ON COLUMN review.reviewhits is '조회수';
+COMMENT ON COLUMN review.reviewcnt is '리뷰개수';
+COMMENT ON COLUMN review.reviewgrade is '평점';
+COMMENT ON COLUMN review.reviewvisible is '출력모드';
+COMMENT ON COLUMN review.reviewrdate is '등록일';
+COMMENT ON COLUMN review.AT_NO is '상품번호';
+COMMENT ON COLUMN review.MEM_NO is '회원번호';
+
+
+DROP SEQUENCE review_seq;
+CREATE SEQUENCE review_seq
+    START WITH 1         -- 시작번호
+    INCREMENT BY 1     -- 증가 값
+    MAXVALUE 9999999999 -- 최대값 : 9999999999 --> NUMBER(10) 대응
+    CACHE 2                  -- 2번은 메모리에서만 계산(업데이트를 계속해서 하지 않음 ), insert가 많으면 cache를 100~200정도로 하면 오라클 속도가 빨라짐..
+    NOCYCLE;
+    
+insert into(reviewno, reviewtitle, reviewcontent, reviewimage, reviewhits, reviewcnt, reviewgrade, reviewtotalgrade, reviewvisible, reviewrdate, AT_NO, MEM_NO)
+values(review_seq.nextval, '상품리뷰', '상품리뷰내용', 'image.jpg', 

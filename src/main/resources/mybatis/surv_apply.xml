@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dev.mvc.surv_apply.Surv_Apply_DAOInter">
+
+ <select id="surv_apply_create" parameterType="Surv_Apply_VO">
+  insert into surv_apply(surv_apply_no, surv_item_no, mem_no, surv_apply_date)
+  values(SURV_apply_seq.nextval, #{surv_item_no}, #{mem_no}, sysdate)
+ </select>
+ 
+ <select id="surv_apply_list" resultType="Surv_Item_Apply_VO" parameterType="int">
+  SELECT i.surv_item_no as i_surv_item_no, i.surv_item_ans as i_surv_item_ans,
+           m.mem_id as m_mem_id, m.mem_name as m_mem_name, m.mem_no as m_mem_no,
+           a.surv_apply_no as surv_apply_no, a.surv_item_no as surv_item_no, a.mem_no as mem_no, a.surv_apply_date as surv_apply_date,
+           s.surv_no as s_surv_no, s.surv_title as s_surv_title
+FROM surv_item i, mem m, surv_apply a, surv s
+WHERE a.surv_item_no = i.surv_item_no and a.mem_no = m.mem_no and a.surv_no=s.surv_no
+ </select>
+</mapper>
