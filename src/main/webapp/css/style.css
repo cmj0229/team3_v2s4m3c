@@ -1743,6 +1743,7 @@ h3 {
   background-size: cover;
   background: #040E27;
   position: relative;
+  /* position: absolute; */
   z-index: 0;
 }
 
@@ -1777,6 +1778,7 @@ h3 {
 /* line 23, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_footer.scss */
 .footer .footer_top .footer_widget .links {
   position: relative;
+  /* position: absolute; */
   top: -14px;
 }
 
@@ -1898,6 +1900,7 @@ h3 {
 /* line 114, ../../Arafath/CL/December/231. Travel-02/HTML/scss/_footer.scss */
 .footer .footer_top .footer_widget .newsletter_form {
   position: relative;
+  /* position: absolute; */
   margin-bottom: 20px;
 }
 
@@ -6679,6 +6682,85 @@ h6 {
 .blog_part .single-home-blog .card ul li span {
   margin-right: 10px;
   font-size: 12px;
+}
+
+
+
+  @import &quot;lesshat&quot;;
+
+@starColour: #16a085;
+@starHoverColour: #1abc9c;
+
+.star-rating { 
+  font-family: &#39;FontAwesome&#39;; 
+  margin: 50px auto;
+  
+  &gt; fieldset {
+    border: none;
+    display: inline-block;
+    
+    &amp;:not(:checked) {
+      &gt; input {
+        position: absolute;
+        top: -9999px;
+        clip: rect(0,0,0,0);
+      }
+
+      &gt; label {
+        float: right;
+        width: 1em;
+        padding: 0 .05em;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 200%;
+        color: @starColour;
+        
+        &amp;:before {
+          content: &#39;\f006  &#39;;
+        }
+        
+        &amp;:hover,
+        &amp;:hover ~ label {
+          color: @starHoverColour;
+          text-shadow: 0 0 3px @starHoverColour;
+          &amp;:before {
+            content: &#39;\f005  &#39;;
+          }
+        }
+      }
+    }
+    
+    &gt; input:checked {
+      &amp; ~ label {
+        &amp;:before {
+          content: &#39;\f005  &#39;;
+        }
+      }    
+    }    
+
+    &gt; label:active {
+      position: relative;
+      top: 2px;
+    }
+  }
+}
+
+body {
+  background: #262829;
+  color: #95a5a6;
+  font-family: &#39;Raleway&#39;;
+  text-align: center;
+  
+  p {
+    font-size: 1.6em;
+    margin: auto;
+    width: 80%;
+  }
+  
+  a {
+    color: @starColour;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

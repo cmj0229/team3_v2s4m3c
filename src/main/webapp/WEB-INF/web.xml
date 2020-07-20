@@ -29,10 +29,10 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
-<!-- ******************** 한글 필터 시작 ******************** -->
+  
+    <!-- ******************** 한글 필터 시작 ******************** -->
   <filter>
-    <filter-name>CharacterEncodingFilter</filter-name> <!-- 서블릿에기반한기술 -->
+    <filter-name>CharacterEncodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
     <init-param>
       <param-name>encoding</param-name>
@@ -50,6 +50,5 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
   <!-- ******************** 한글 필터 종료 ******************** -->
-  
-  
+
 </web-app>

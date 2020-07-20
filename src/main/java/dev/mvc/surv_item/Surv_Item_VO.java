@@ -30,6 +30,7 @@ public class Surv_Item_VO {
   /** 회원번호 */
   private int mem_no;
   
+  
   public Surv_Item_VO() {
     
   }
@@ -103,4 +104,5 @@ public class Surv_Item_VO {
   public void setMem_no(int mem_no) {
     this.mem_no = mem_no;
   }
+
 }

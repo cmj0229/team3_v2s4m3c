@@ -6,12 +6,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="dev.mvc.surv.Surv_DAOInter">
    <insert id="surv_create" parameterType="Surv_VO">
-    INSERT INTO surv(surv_no, surv_seqno, surv_title, surv_passwd, surv_startdate, surv_enddate, surv_cnt, surv_continue)
-    VALUES(SURV_seq.nextval, #{surv_seqno}, #{surv_title}, #{surv_passwd}, #{surv_startdate}, #{surv_enddate}, 0, #{surv_continue})
+    INSERT INTO surv(surv_no, surv_seqno, surv_title, surv_passwd, surv_startdate, surv_enddate, surv_cnt, surv_continue, surv_item_nowdate)
+    VALUES(SURV_seq.nextval, #{surv_seqno}, #{surv_title}, #{surv_passwd}, #{surv_startdate}, #{surv_enddate}, 0, #{surv_continue}, sysdate)
   </insert>
   
   <select id="surv_list" resultType="Surv_VO">
-   SELECT surv_no, surv_seqno, surv_title, surv_passwd, surv_startdate, surv_enddate, surv_cnt, surv_continue
+   SELECT surv_no, surv_seqno, surv_title, surv_passwd, surv_startdate, surv_enddate, surv_cnt, surv_continue,surv_item_nowdate
    FROM SURV
    ORDER BY SURV_SEQNO DESC
   </select>

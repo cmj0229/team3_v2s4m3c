@@ -14,8 +14,7 @@ CREATE TABLE surv(
 		SURV_ENDDATE                  		VARCHAR2(50)		 NOT NULL,
         SURV_CNT                      		NUMBER(10)		 NOT NULL,
 		SURV_CONTINUE                  VARCHAR2(100)			 NOT NULL,
-		MEM_NO                        		NUMBER(10)		 NULL ,
-  FOREIGN KEY (MEM_NO) REFERENCES MEM (MEM_NO)
+        surv_item_nowdate  DATE               NOT NULL
 );
 
 COMMENT ON TABLE SURV is '설문조사';
@@ -27,7 +26,7 @@ COMMENT ON COLUMN SURV.SURV_STARTDATE is '설문조사시작날짜';
 COMMENT ON COLUMN SURV.SURV_ENDDATE is '설문조사종료날짜';
 COMMENT ON COLUMN SURV.SURV_CNT is '설문조사참여인원';
 COMMENT ON COLUMN SURV.SURV_CONTINUE is '설문조사진행여부';
-COMMENT ON COLUMN SURV.MEM_NO is '회원번호';
+COMMENT ON COLUMN SURV.surv_item_nowdate is '현재시간';
 
 DROP SEQUENCE SURV_seq;
 CREATE SEQUENCE SURV_seq
@@ -39,16 +38,16 @@ CREATE SEQUENCE SURV_seq
 
 commit;
 1) 등록
-INSERT INTO surv(surv_no, surv_seqno, surv_title,surv_passwd, surv_startdate, surv_enddate, surv_cnt, surv_continue, mem_no)
-VALUES(SURV_seq.nextval, 1, '설문조사제목', '1234', '2020-07-07', '2020-07-14', 0, '설문진행', 1);
+INSERT INTO surv(surv_no, surv_seqno, surv_title,surv_passwd, surv_startdate, surv_enddate, surv_cnt, surv_continue, surv_item_nowdate)
+VALUES(SURV_seq.nextval, 1, '설문조사제목', '1234', '2020-07-07', '2020-07-14', 0, '설문진행', sysdate);
 
-INSERT INTO surv(surv_no, surv_seqno, surv_title,surv_passwd, surv_startdate, surv_enddate, surv_cnt, surv_continue, mem_no)
-VALUES(SURV_seq.nextval, 1, '설문조사제목', '1234', '2020-07-07', '2020-07-14', 0, '설문진행', 1);
+INSERT INTO surv(surv_no, surv_seqno, surv_title,surv_passwd, surv_startdate, surv_enddate, surv_cnt, surv_continue, surv_item_nowdate)
+VALUES(SURV_seq.nextval, 1, '설문조사제목', '1234', '2020-07-07', '2020-07-14', 0, '설문진행', sysdate);
 
 
 commit;
 2) 목록
-SELECT surv_no, surv_seqno, surv_title,surv_passwd, surv_startdate, surv_enddate, surv_cnt, surv_continue, mem_no
+SELECT surv_no, surv_seqno, surv_title,surv_passwd, surv_startdate, surv_enddate, surv_cnt, surv_continue, surv_item_nowdate
 FROM SURV
 ORDER BY SURV_NO DESC;
  

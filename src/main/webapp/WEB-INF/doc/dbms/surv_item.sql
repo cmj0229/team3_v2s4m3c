@@ -23,6 +23,7 @@ COMMENT ON COLUMN surv_choice.surv_ans_1 is '답변';
 COMMENT ON COLUMN SURV_ITEM.surv_item_cnt is '설문항목선택인원';
 COMMENT ON COLUMN SURV_ITEM.surv_item_passwd is '설문항목패스워드';
 
+
 DROP SEQUENCE SURV_ITEM_seq;
 CREATE SEQUENCE SURV_ITEM_seq
     START WITH 1         -- 시작번호
@@ -35,8 +36,7 @@ CREATE SEQUENCE SURV_ITEM_seq
 INSERT INTO SURV_ITEM(SURV_ITEM_NO, SURV_NO, mem_no, SURV_item_SEQNO, surv_item_ans,  surv_item_cnt, surv_item_passwd)
 VALUES(surv_item_seq.nextval, 1, 1, 1,  '답변', 0, '1234'); 
 
-INSERT INTO SURV_ITEM(SURV_ITEM_NO, SURV_NO, mem_no, SURV_item_SEQNO, surv_item_ans,  surv_item_cnt, surv_item_passwd)
-VALUES(surv_item_seq.nextval, 1, 1, 1,  '답변', 0, '1234');  
+
 
 commit;
 2) 목록

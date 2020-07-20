@@ -31,6 +31,25 @@
 
     <link rel="stylesheet" href="css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+    
+    <script type="text/javascript">
+    window.onload = function () {
+
+
+      alert('메인');
+
+/*       if (success == 1) {
+        msg = "회원 가입 성공";
+        $('#modal_content').attr('class', 'alert alert-success'); // Bootstrap CSS 변경
+        $('#modal_title').html('회원정보 수정 성공'); // 제목 
+        $('#modal_content').html(msg);        // 내용
+        $('#modal_panel').modal();              // 다이얼로그 출력
+        } */
+
+
+      });
+
+    </script>
 </head>
 
 <body>
@@ -38,8 +57,29 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
 
-
-   <c:import url = "/menu/top.jsp"/>
+  <jsp:include page="/menu/top.jsp" />
+  
+  <!-- Modal 알림창 시작 -->
+  <div class="modal fade" id="modal_panel" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">×</button>
+          <h4 class="modal-title" id='modal_title'></h4><!-- ▶ 제목 -->
+        </div>
+        <div class="modal-body">
+          <p id='modal_content'></p>  <!-- ▶ 내용 -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="toread" class="btn btn-default" data-dismiss="modal">확인</button>
+          <!-- <button type="button" onclick="" data-dismiss="modal">확인</button> -->
+        </div>
+      </div>
+    </div>
+  </div> 
+<!-- Modal 알림창 종료 --> 
+   
 
     <!-- slider_area_start -->
     <div class="slider_area">
@@ -189,9 +229,9 @@
                                         <div class="author_thumb">
                                             <img src="img/testmonial/author.png" alt="">
                                         </div>
-                                        <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering.</p>
+                                        <p>"교촌은 진리입니다. 전 레드만 먹어요. 왜냐면 레드가 짱이니까요. 나중에 부부부업으로 교촌 차릴거예요ㅎㅎ >.~</p>
                                         <div class="testmonial_author">
-                                            <h3>- Micky Mouse</h3>
+                                            <h3>- ＊봉님, 교촌 후기</h3>
                                         </div>
                                     </div>
                                 </div>

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.Date" %>
  
 <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -103,6 +104,7 @@
      
      <%-- table 내용 --%>
      <tbody>
+     
       <c:forEach var="surv_VO" items="${surv_list }">
         <c:set var="surv_no" value="${surv_VO.surv_no }"/>
         <tr>
@@ -112,9 +114,20 @@
           <td>${surv_VO.surv_enddate.substring(0,10) }</td>
           <td>${surv_VO.surv_continue }</td>
           <td>${surv_VO.surv_cnt }</td>
+         
+          <c:choose>
+            <c:when test="${surv_VO.surv_enddate != surv_item_nowdate }">
+              <span class='menu_divide' > | </span> 
+                <A href="../surv_item/surv_item_list.do?surv_no=${surv_VO.surv_no }">참여</A>     
+            </c:when>
+          <c:otherwise>
+            <span class='menu_divide' > | </span> 
+               <A href="../surv_item/surv_result.do?surv_no=${surv_VO.surv_no }">결과</A>     
+          </c:otherwise>
+         </c:choose>
           <td>
            <A href="../surv_item/surv_item_list.do?surv_no=${surv_VO.surv_no }">참여</A>/
-          <A href="../surv_item/surv_item_create.do?surv_no=${surv_VO.surv_no }">항목등록</A> / 
+           <A href="../surv_item/surv_item_create.do?surv_no=${surv_VO.surv_no }">항목등록</A> / 
               <A href="./surv_update.do?surv_no=${surv_no }">수정</A> / 
               <A href="./surv_delete.do?surv_no=${surv_no }">삭제</A> /
               <a href="./update_seqno_up.do?surv_no=${surv_no }">
