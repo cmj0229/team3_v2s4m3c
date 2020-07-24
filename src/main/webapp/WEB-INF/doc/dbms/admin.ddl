@@ -1,4 +1,6 @@
--- 테이블 구조
+/**********************************/
+/* Table Name: 관리자*/
+/**********************************/
 DROP TABLE admin;
 CREATE TABLE admin(
 adminno             NUMBER(10)  NOT NULL  PRIMARY KEY, -- 관리자 번호

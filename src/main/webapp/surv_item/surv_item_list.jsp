@@ -158,7 +158,6 @@
     <A href='./surv_item_delete.do?surv_item_no=${surv_Item_VO.surv_item_no }'>삭제</A>
   </ASIDE>
   
-  <DIV id='panel_create' style='padding: 10px 0px 10px 0px; background-color: #F9F9F9; width: 100%; text-align: center;'>
     <FORM name='frm' id='frm' action='./submit_proc.do'>
        <%-- <input type='hidden' name='surv_no' id='surv_no' value='${param.surv_no }'> --%>  
       
@@ -176,7 +175,6 @@
       <button type="button" id="btn_send" class="btn btn-info">참여</button>
       
     </FORM>     
-  </div>
 
 </body>
 </html>
