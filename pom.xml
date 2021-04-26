@@ -206,7 +206,7 @@
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
-      <version>2.6</version> <!-- 에러나면 버전을 내리면 됨-->
+      <version>2.7</version> <!-- 에러나면 버전을 내리면 됨-->
     </dependency> 
     
      <!-- ******************** 추가 선언 영역 시작 ******************** -->
